@@ -1,6 +1,6 @@
 # Awful Log
 
-These classes come from [Zinc](https://github.com/svenvc/zinc), they are just stripped down to a minimal beacon logging implementation. Subclass `AwfulLogEvent` to log beacons.
+These classes come from [Zinc](https://github.com/svenvc/zinc), they compose a stripped down, minimal, `Beacon` logging implementation. Subclass `AwfulLogEvent` to log `Beacons`.
 
 See: [How to log Zinc events using Beacon](https://book.gtoolkit.com/how-to-log-zinc-events-using-beacon-94i4898osisv77xpzco65f9tq) where this was ripped from.
 
