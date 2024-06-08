@@ -59,9 +59,9 @@ In this case the log announcements from AwfulLog are directly used as Beacon sig
 ```st
 beacon := Beacon new 
 	announcer: AwfulLogEvent announcer
-  
+```
 The logger that we use next needs to explicitly listed to the Beacon instance we previously created.
-
+```
 logger := MemoryLogger new 
 	beacon: beacon;
 	startFor: AwfulClientLogEvent
