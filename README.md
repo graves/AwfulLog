@@ -41,7 +41,7 @@ We can work with any Beacon logger to handle these signals; for example a Memory
 MemoryLogger startFor: AwfulLogEventSignal.
   
 To filter for particular types of announcements we can use a custom condition:
-
+```st
 MemoryLogger startFor: (AwfulLogEventSignal where: [ :aSignal |
 	aSignal target isKindOf: AwfulClientLogEvent]).
   
@@ -50,12 +50,13 @@ MemoryLogger stop
 MemoryLogger reset.
   
 MemoryLogger instance
+```
 
 ## Using a custom Beacon
 The second, and more complex way to handle AwfulLog log events using Beacon, is to create a new Beacon instance that directly listens for announcement announced by AwfulLogEvent>>#announcer .
 
 In this case the log announcements from AwfulLog are directly used as Beacon signals without any conversion.
-
+```st
 beacon := Beacon new 
 	announcer: AwfulLogEvent announcer
   
@@ -67,4 +68,5 @@ logger := MemoryLogger new
   
 logger stop.
   
-logger reset
+logger reset
+```
