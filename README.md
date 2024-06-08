@@ -16,7 +16,7 @@ Announcement subclass: #AwfulLogEvent
 	package: 'AwfulLog'
 ```
 maintains a singleton announcer, accessed through AwfulLogEvent>>#announcer , that is used to announce all log events. Consumers interested in log events can register with that announcer.
-```
+```st
 AwfulLogEvent announcer 
 	when: AwfulLogEvent 
 	do: [ :event | 
