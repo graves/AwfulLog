@@ -1,12 +1,12 @@
 # Awful Log
 
-These come from [Zinc](https://github.com/svenvc/zinc), it is just stripped down to a minimal implementation. Subclass `AwfulLogEvent` to log beacons.
+These classes come from [Zinc](https://github.com/svenvc/zinc), they are just stripped down to a minimal beacon logging implementation. Subclass `AwfulLogEvent` to log beacons.
 
 See: [How to log Zinc events using Beacon](https://book.gtoolkit.com/how-to-log-zinc-events-using-beacon-94i4898osisv77xpzco65f9tq) where this was ripped from.
 
 ## Load Lepiter				After installing with `Metacello`, you will be able to execute```#BaselineOfAwfulLog asClass loadLepiter```
 
-## How to Log AwfulLog events
+## How to Log `AwfulLog` events
 
 The class side of `AwfulLogEvent`
 ```st
@@ -53,15 +53,15 @@ MemoryLogger reset.
 MemoryLogger instance
 ```
 
-## Using a custom Beacon
-The second, and more complex way to handle AwfulLog log events using Beacon, is to create a new Beacon instance that directly listens for announcement announced by AwfulLogEvent>>#announcer .
+## Using a custom `Beacon`
+The second, and more complex way to handle `AwfulLog` log events using `Beacon`, is to create a new `Beacon` instance that directly listens for announcement announced by `AwfulLogEvent>>#announcer` .
 
-In this case the log announcements from AwfulLog are directly used as Beacon signals without any conversion.
+In this case the log announcements from `AwfulLog` are directly used as `Beacon` signals without any conversion.
 ```st
 beacon := Beacon new 
 	announcer: AwfulLogEvent announcer
 ```
-The logger that we use next needs to explicitly listed to the Beacon instance we previously created.
+The logger that we use next needs to explicitly listed to the `Beacon` instance we previously created.
 ```st
 logger := MemoryLogger new 
 	beacon: beacon;
