@@ -62,7 +62,7 @@ beacon := Beacon new
 	announcer: AwfulLogEvent announcer
 ```
 The logger that we use next needs to explicitly listed to the Beacon instance we previously created.
-```
+```st
 logger := MemoryLogger new 
 	beacon: beacon;
 	startFor: AwfulClientLogEvent
