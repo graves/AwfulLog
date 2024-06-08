@@ -1,6 +1,6 @@
 # Awful Log
 
-These come from Zinc, just stripped down. Subclass class them to log beacons.
+These come from Zinc, just stripped down. Subclass them to log beacons.
 
 See: [How to log Zinc events using Beacon](https://book.gtoolkit.com/how-to-log-zinc-events-using-beacon-94i4898osisv77xpzco65f9tq) where this was ripped from.
 
@@ -14,8 +14,9 @@ Announcement subclass: #AwfulLogEvent
 	instanceVariableNames: 'id processId timestamp'
 	classVariableNames: 'IdCounter LogEventAnnouncer'
 	package: 'AwfulLog'
+```
 maintains a singleton announcer, accessed through AwfulLogEvent>>#announcer , that is used to announce all log events. Consumers interested in log events can register with that announcer.
-
+```
 AwfulLogEvent announcer 
 	when: AwfulLogEvent 
 	do: [ :event | 
