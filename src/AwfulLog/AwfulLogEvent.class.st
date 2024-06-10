@@ -18,6 +18,22 @@ AwfulLogEvent class >> announcer [
 	^ LogEventAnnouncer ifNil: [ LogEventAnnouncer := Announcer new ]
 ]
 
+{ #category : #accessing }
+AwfulLogEvent class >> beaconMemoryLogger [
+	"Create, start and return a new MemoryLogger using a Beacon
+	directly wired to the AwfulLogEvent announcer.
+	Note that I can be invoked on subclasses. wtf"
+	
+	| beacon memoryLogger |
+	beacon := Beacon new. 
+	beacon announcer: self announcer.
+	memoryLogger := MemoryLogger new.
+	memoryLogger name: 'Awful Mtv'.
+	memoryLogger beacon: beacon.
+	memoryLogger startFor: self.
+	^ memoryLogger
+]
+
 { #category : #'class initialization' }
 AwfulLogEvent class >> initialize [
 	IdCounter := 0.
@@ -27,7 +43,16 @@ AwfulLogEvent class >> initialize [
 		ifAbsent: [ Smalltalk addToStartUpList: self ]
 ]
 
-{ #category : #convenience }
+{ #category : #accessing }
+AwfulLogEvent class >> logToBeacon [
+	self stopLoggingToBeacon.
+	^ self announcer 
+		when: AwfulLogEvent 
+		do: [ :event | (AwfulLogEventSignal on: event) emit ]
+		for: self
+]
+
+{ #category : #accessing }
 AwfulLogEvent class >> logToTranscript [
 	self stopLoggingToTranscript.
 	^ self announcer 
@@ -133,6 +158,11 @@ AwfulLogEvent >> processId [
 { #category : #initialize }
 AwfulLogEvent >> processId: anObject [
 	processId := anObject
+]
+
+{ #category : #accessing }
+AwfulLogEvent >> stopLoggingToBeacon [.
+	self announcer unsubscribe: self
 ]
 
 { #category : #accessing }
