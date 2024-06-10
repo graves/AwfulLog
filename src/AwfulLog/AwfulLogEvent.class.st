@@ -81,6 +81,11 @@ AwfulLogEvent class >> startUp [
 	IdCounter := 0
 ]
 
+{ #category : #accessing }
+AwfulLogEvent class >> stopLoggingToBeacon [.
+	self announcer unsubscribe: self
+]
+
 { #category : #convenience }
 AwfulLogEvent class >> stopLoggingToTranscript [
 	self announcer unsubscribe: self
@@ -158,11 +163,6 @@ AwfulLogEvent >> processId [
 { #category : #initialize }
 AwfulLogEvent >> processId: anObject [
 	processId := anObject
-]
-
-{ #category : #accessing }
-AwfulLogEvent >> stopLoggingToBeacon [.
-	self announcer unsubscribe: self
 ]
 
 { #category : #accessing }
