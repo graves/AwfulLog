@@ -23,7 +23,6 @@ BaselineOfAwfulLog class >> loadLepiter [
 BaselineOfAwfulLog >> baseline: spec [
 	<baseline>
 		^ spec for: #common do: [
-			spec package: 'AwfulLog'.
 			spec package: 'AwfulLog'
 		]
 ]
