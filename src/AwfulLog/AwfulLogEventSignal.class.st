@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'target'
 	],
-	#category : #AwfulLog
+	#category : #'AwfulLog-Logging'
 }
 
 { #category : #'instance creation' }
